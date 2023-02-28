@@ -2,6 +2,7 @@ import { createRoot } from "react-dom/client";
 import { useState, useEffect } from "react";
 import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import '../src/style.css';
+import { NavBar , AllThings, SingleThing } from "./Components";
 
 const appElement = document.getElementById("app");
 const root = createRoot(appElement);
@@ -24,13 +25,19 @@ const App = () =>{
     useEffect(() => {
         fetchThingsData();
     }, [])
-    
-    return(
-        
-        <div>
-            <p>Placeholder</p>
-        </div>
+
+    return(       
+        <BrowserRouter>
+            <div>
+              <NavBar />
+                
+                <Routes>
+                    <Route path="/" element={<AllThings things={things}/>} />
+                    <Route path="/:id" element={<SingleThing things={things} />} />
+                </Routes>
+
+            </div>
+        </BrowserRouter> 
     )
 }
-
 root.render(<App />);
