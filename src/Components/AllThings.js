@@ -1,10 +1,40 @@
 import {Link} from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const AllThings = (props) =>{
     const [searchByName, setSearchByName] = useState("");
-    const things = props.things;
+    const {things, setIsLoggedIn, setUserData, isLoggedIn, userData} = props;
     // console.log(things);
+
+    useEffect(() =>{
+        if(localStorage.getItem("token")){
+            setIsLoggedIn(true);
+            console.log(isLoggedIn);
+            
+            fetchUserData();
+            console.log(userData);
+        }
+        else{
+            console.log("No token present");
+            setIsLoggedIn(false);  
+        }
+        async function fetchUserData() {
+            try {           
+                const response = await fetch("https://strangers-things.herokuapp.com/api/2301-ftb-mt-web-ft/users/me", {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${localStorage.getItem("token")}`     
+                    }
+                })
+                const translatedData = await response.json();
+                console.log("Below is our personal account data:")
+                console.log(translatedData);
+                setUserData(translatedData.data)
+            } catch (error) {
+                console.log(error); 
+            }
+        }
+    }, [])
 
 
     let filterThingsByName = things.filter((singleThing) =>{

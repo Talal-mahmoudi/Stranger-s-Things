@@ -17,6 +17,7 @@ const SingleThing = (props) => {
             <p>Name: {filteredThing.title}</p>
             <p>Description: {filteredThing.description}</p>
             <p>Price: {filteredThing.price}</p>
+            <p>Write a Message: </p>
             {filteredThing.willDeliver ? <p>We will Deliver</p>: <p>We will not deliver</p>}
             
         </div>
