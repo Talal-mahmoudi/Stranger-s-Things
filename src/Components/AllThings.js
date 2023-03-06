@@ -33,23 +33,29 @@ const AllThings = (props) =>{
 
         
         <div>
+            <br/>
             <CreatePosts setIsLoggedIn={setIsLoggedIn} fetchUserData={fetchUserData} isLoggedIn={isLoggedIn} filterThingsByName={filterThingsByName} setFilterThingsByName={setFilterThingsByName} setThings={setThings}/>
-            <div>
+            <br/>
+            <div className="searchBar">
                 <p className="inputBar">Name: </p>
                 <input type="text" placeholder="Search by name." onChange={(event) =>{
                     setSearchByName(event.target.value);
                 }}>
                 </input>
             </div>
+            <br/>
             <section>
                 {
                     !filterThingsByName.length ? <div>loading data...</div> : filterThingsByName.map((singleThing) =>{
                         return(
-                            <div key={singleThing._id}>
-                                {/* <Link to={`/${singleThing.author._id}`}> Item: {singleThing.title}</Link>  */}
-                                <p>item title: {singleThing.title}</p>
-                                <p>item price: {singleThing.price}</p>
-                                <Link to={`/${singleThing._id}`}> See detailed view</Link> 
+                            <div key={singleThing._id} >
+                                <div className="allPosts">
+                                    {/* <Link to={`/${singleThing.author._id}`}> Item: {singleThing.title}</Link>  */}
+                                    <p>item title: {singleThing.title}</p>
+                                    <p>item price: {singleThing.price}</p>
+                                    <Link to={`/${singleThing._id}`}> See detailed view</Link> 
+                                </div>
+                                <br/>
                             </div>
                         )
                     }) 

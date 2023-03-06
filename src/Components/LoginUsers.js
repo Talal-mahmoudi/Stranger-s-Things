@@ -56,27 +56,34 @@ const LoginUsers = (props) =>{
 
     return(
         <div>
-            <h2>Login: </h2>
-            <form onSubmit={sendLoginRequest}>
-                <input 
-                    type="text"
-                    placeholder="username"
-                    value={login}
-                    onChange={(event) =>setLogin(event.target.value)}
-                
-                />
-               
-                <input 
-                    type="text"
-                    placeholder="password"
-                    value={pass}
-                    onChange={(event) =>setPass(event.target.value)}
-                />
-                <br />
-                <button type="submit">Login</button>
-                <br />
-                <Link to="/users/register" element={<RegisterUsers />}>Don't have an account? Sign Up here!</Link>
-            </form>
+            <br/>
+            <div className="loginForm">
+                <h2>Login: </h2>
+                <form onSubmit={sendLoginRequest} >
+                    <input 
+                        className="loginInput"
+                        type="text"
+                        placeholder="username"
+                        value={login}
+                        onChange={(event) =>setLogin(event.target.value)}
+                    
+                    />
+                    
+                    <input 
+                        className="loginInput"
+                        type="text"
+                        placeholder="password"
+                        value={pass}
+                        onChange={(event) =>setPass(event.target.value)}
+                    />
+                    <br />
+                    <br/>
+                    <button type="submit" className="loginButton">Login</button>
+                    <br />
+                    <br/>
+                    <Link className="loginLink"  to="/users/register" element={<RegisterUsers />}>Don't have an account? Sign Up here!</Link>
+                </form>
+            </div>
         </div>
 
     )

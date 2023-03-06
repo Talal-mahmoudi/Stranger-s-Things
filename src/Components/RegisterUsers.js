@@ -57,24 +57,32 @@ const RegisterUsers = (props) =>{
 
     return (
         <div>
-            <h2>Sign up for a new account: </h2>
+            <br/>
+            <div className="registerForm">
+                <h2>Sign up for a new account: </h2>
 
-            <form onSubmit={sendRegisterRequest}>
-                <input  
-                    type="text" 
-                    placeholder="New Username"
-                    value={newUsername}
-                    onChange={(event) => setNewUsername(event.target.value)}
-                />
-                <input 
-                    type="text"
-                    placeholder="New Password"
-                    value={newPassword}
-                    onChange={(event) =>setNewPassword(event.target.value)}
-                />
-                <br />
-                <button type="submit">Create Account</button>
-            </form>
+                <form onSubmit={sendRegisterRequest}>
+                    <input
+                        className="registerInput"  
+                        type="text" 
+                        placeholder="New Username"
+                        value={newUsername}
+                        onChange={(event) => setNewUsername(event.target.value)}
+                    />
+                    <input 
+                        className="registerInput"
+                        type="text"
+                        placeholder="New Password"
+                        value={newPassword}
+                        onChange={(event) =>setNewPassword(event.target.value)}
+                    />
+                    <br />
+                    <br/>
+                    <button type="submit" className="registerButton">Create Account</button>
+                    <br/>
+                    <br/>
+                </form>
+            </div>
         </div>
     )
 

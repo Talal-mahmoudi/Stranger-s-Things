@@ -1,9 +1,98 @@
-*{
+/* *{
     background-color: rgb(59, 55, 55);
-}
-/* #app{
+} */
+/* .App{
+    display: flex;
 
 } */
 a{
     color: blue;
+}
+.header{
+    /* position: fixed; */
+    display: flex;
+    justify-content: space-evenly;
+    /* justify-content: center; */
+    align-items: center;
+    
+}
+.navLinks{
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid blue;
+    /* box-shadow: rgb(193, 56, 56) 1px 0 3px; */
+    padding: 3px;
+    font-size: x-large;
+}
+.allPosts{
+    border: 1px solid purple;
+    padding: 3px;
+    border-radius: 4%;
+}
+.searchBar{
+    display: flex;
+}
+.singlePost{
+    border: 1px solid purple;
+}
+.messageForm{
+    display: flex;
+    flex-flow:  wrap;
+    /* width: 5vw;
+    height: 5vh; */
+}
+/* .messageInput{
+    width: 10vw;
+    height: 10vh;
+} */
+.mapUserPosts{
+    border: 1px solid blueviolet;
+}
+.mapUserComments{
+    border: 1px solid green;
+}
+.loginForm{
+    display: flex;
+    flex-flow: column wrap;
+    /* justify-content: center; */
+   
+    
+    /* justify-content: center; */
+    align-items: center;
+    border: 1px solid rgb(87, 18, 18);
+    /* width: 30%;
+    align-self: center;
+    text-align: center; */
+    padding: 4px;
+
+}
+.loginInput{
+    width: 100%;
+    
+}
+.loginButton{
+    align-self: center;
+    width: 100%;
+}
+.loginLink{
+    display: flex;
+    justify-content: center;
+    
+}
+.registerForm{
+    display: flex;
+    flex-flow: column wrap;
+    /* justify-content: center; */
+    align-items: center;
+    border: 1px solid rgb(87, 18, 18);
+    padding: 4px;
+
+}
+.registerInput{
+    width: 100%;
+    
+}
+.registerButton{
+    align-self: center;
+    width: 100%;
 }

@@ -94,40 +94,47 @@ const Profile = (props) =>{
         <div>
             <h3>{userData.username}'s Posts: </h3>
             
-            <section>
+            <section >
             {
                 !myUserData.length ? <div>You don't have any posts</div> : myUserData.map((singlePost) =>{
                     return(
                         <div key={singlePost._id}>
-                            <p>Title: {singlePost.title}</p>
-                            <p>Messages:</p>
-                            {
-                                !singlePost.messages.length ? <div>No messages</div>: singlePost.messages.map((singleComment, index)=>{
-                                    return(
-                                        <div key={index}>
-                                            <p>{index+1}. {singleComment.content} </p>
-                                        </div>
-                                    )
-                                })
-                            }
+                            <div className="mapUserPosts">
+                                <p>Title: {singlePost.title}</p>
+                                <p>Messages:</p>
+                                {
+                                    !singlePost.messages.length ? <div>No messages</div>: singlePost.messages.map((singleComment, index)=>{
+                                        return(
+                                            <div key={index}>
+                                                <p>{index+1}. {singleComment.content} </p>
+                                            </div>
+                                        )
+                                    })
+                                }
+                                <br/>
+                            
+                                <button value={singlePost._id} onClick={deletePost} >
+                                    Delete {singlePost.title}
+                                </button>
+                                
+                            </div>
                             <br/>
-                           
-                            <button value={singlePost._id} onClick={deletePost} >
-                                Delete {singlePost.title}
-                            </button>
                         </div>
                     )
                 })
             }
             </section>
             <h3> Messages from {userData.username} : </h3>
-            <section>
+            <section >
             {
                 !myComments.length? <div>You havent left any comments</div> : myComments.map((singleComment) =>{
                     return(
                         <div key={singleComment._id}>
-                            <p>The post: {singleComment.post.title}</p>
-                            <p>Your comment: {singleComment.content}</p>
+                            <div className="mapUserComments">
+                                <p>The post: {singleComment.post.title}</p>
+                                <p>Your comment: {singleComment.content}</p>
+                            </div>
+                            <br/>
                         </div>
                     )
                 })

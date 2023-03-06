@@ -42,30 +42,34 @@ const SingleThing = (props) => {
         postMessage();
         setMsg("");
     }
-    console.log(filteredThing);
+    // console.log(filteredThing);
     const messages = filteredThing.messages;
 
     return (
         <div>
-            <p>From: {filteredThing.author.username}</p>
-            <p>Name: {filteredThing.title}</p>
-            <p>Description: {filteredThing.description}</p>
-            <p>Price: {filteredThing.price}</p>
-            <p>Write a Message: </p>
-            <form onSubmit={handleMessage}>
+            <br/>
+            <div className="singlePost">
+                <p>From: {filteredThing.author.username}</p>
+                <p>Name: {filteredThing.title}</p>
+                <p>Description: {filteredThing.description}</p>
+                <p>Price: {filteredThing.price}</p>
+                <p>Write a Message: </p>
+                <form className="messageForm" onSubmit={handleMessage}>
+                    
+                    <input className="messageInput" type="text" placeholder="write a message" value={msg} onChange= {(event) =>setMsg(event.target.value)}></input>
+                    
+                    <button type="submit"> Submit the message: </button>
+                </form>
+                {
+                    !messages.length ? <div><br/>no messages so far</div>: messages.map((singleMessage, index)=>{
+                        <div key={index +1}>
+                            <p>{index}. {singleMessage}</p>
+                        </div>
+                    })
+                }
+                {filteredThing.willDeliver ? <p>We will Deliver</p>: <p>We will not deliver</p>}
                 
-                <input type="text" placeholder="write a message" value={msg} onChange= {(event) =>setMsg(event.target.value)}></input>
-                <button type="submit"> Submit the message: </button>
-            </form>
-            {
-                !messages.length ? <div>no messages so far</div>: messages.map((singleMessage, index)=>{
-                    <div key={index +1}>
-                        <p>{index}. {singleMessage}</p>
-                    </div>
-                })
-            }
-            {filteredThing.willDeliver ? <p>We will Deliver</p>: <p>We will not deliver</p>}
-            
+            </div>
         </div>
     )
 }

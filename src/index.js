@@ -50,7 +50,7 @@ const App = () =>{
 
     return(       
         <BrowserRouter>
-            <div>
+            <div className="App">
               <NavBar isLoggedIn = {isLoggedIn} setIsLoggedIn={setIsLoggedIn} userData={userData}/>
                 
                 <Routes>
