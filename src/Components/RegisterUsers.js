@@ -11,14 +11,6 @@ const RegisterUsers = (props) =>{
 
     const navigate = useNavigate();
     
-    // useEffect(() =>{
-    //     if(localStorage.getItem("token")){
-    //         setIsLoggedIn(true);
-    //     }
-    //     else{
-    //         setIsLoggedIn(false);
-    //     }
-    // })
 
     async function sendRegisterRequest(event) {
         event.preventDefault();

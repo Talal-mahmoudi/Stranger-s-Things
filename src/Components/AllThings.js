@@ -1,50 +1,39 @@
 import {Link} from "react-router-dom";
 import { useState, useEffect } from "react";
+import CreatePosts from "./CreatePosts";
 
 const AllThings = (props) =>{
+    const {things, setIsLoggedIn, setUserData, isLoggedIn, userData, setThings, fetchThingsData, fetchUserData} = props;
     const [searchByName, setSearchByName] = useState("");
-    const {things, setIsLoggedIn, setUserData, isLoggedIn, userData} = props;
-    // console.log(things);
+    const [filterThingsByName, setFilterThingsByName] = useState(!things.length ? [] : things);
+    
 
-    useEffect(() =>{
-        if(localStorage.getItem("token")){
-            setIsLoggedIn(true);
-            console.log(isLoggedIn);
-            
-            fetchUserData();
-            console.log(userData);
-        }
-        else{
-            console.log("No token present");
-            setIsLoggedIn(false);  
-        }
-        async function fetchUserData() {
-            try {           
-                const response = await fetch("https://strangers-things.herokuapp.com/api/2301-ftb-mt-web-ft/users/me", {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${localStorage.getItem("token")}`     
-                    }
-                })
-                const translatedData = await response.json();
-                console.log("Below is our personal account data:")
-                console.log(translatedData);
-                setUserData(translatedData.data)
-            } catch (error) {
-                console.log(error); 
-            }
-        }
+    useEffect(() => {
+        fetchThingsData();
     }, [])
+    
+    useEffect(()=>{
+       
+        if(things.length){
+           setFilterThingsByName(things.filter((singleThing) =>{
+            // console.log(singleThing);
 
-
-    let filterThingsByName = things.filter((singleThing) =>{
-        let lowerCaseThing = singleThing.title.toLowerCase();
-        return lowerCaseThing.includes(searchByName.toLowerCase())
-    })
+            let lowerCaseThing = singleThing.title.toLowerCase();
+            
+            return lowerCaseThing.includes(searchByName.toLowerCase())
+        })
+        // console.log("this is the all Things useEffect");
+        // console.log(filterThingsByName)) 
+           )
+        }
+    
+    }, [searchByName])
 
     return (
+
         
         <div>
+            <CreatePosts setIsLoggedIn={setIsLoggedIn} fetchUserData={fetchUserData} isLoggedIn={isLoggedIn} filterThingsByName={filterThingsByName} setFilterThingsByName={setFilterThingsByName} setThings={setThings}/>
             <div>
                 <p className="inputBar">Name: </p>
                 <input type="text" placeholder="Search by name." onChange={(event) =>{
